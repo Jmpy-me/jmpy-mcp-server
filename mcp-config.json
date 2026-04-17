@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "jmpy": {
+      "name": "Jmpy.me MCP Server",
+      "description": "URL Shortener & QR Code Generator",
+      "command": "node",
+      "args": [
+        "-e",
+        "const http=require('https');const req=http.request({hostname:'jmpy.me',port:443,path:'/mcp',method:'POST',headers:{'Content-Type':'application/json','x-mcp-key':process.env.JMPY_API_KEY}},(res)=>{res.pipe(process.stdout);});process.stdin.pipe(req);"
+      ],
+      "env": {
+        "JMPY_API_KEY": "YOUR_API_KEY_HERE"
+      }
+    }
+  }
+}

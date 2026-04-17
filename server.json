@@ -1,0 +1,13 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.jmpy-me/jmpy-mcp-server",
+  "version": "1.1.0",
+  "description": "Official JMPY.me MCP Server for URL shortening, QR codes, and 70+ advanced marketing tools.",
+  "remotes": [
+    {
+      "name": "production",
+      "type": "sse",
+      "url": "https://jmpy.me/mcp/sse"
+    }
+  ]
+}
