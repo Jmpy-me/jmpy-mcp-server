@@ -10,7 +10,7 @@ Unlock the power of **Jmpy.me** directly within your AI agents. This official **
 
 ## 🛠️ Performance-Grade Tools
 
-Our MCP server exposes a rich suite of 70+ tools, optimized for AI discovery and execution:
+Our MCP server exposes a rich suite of 72+ tools, optimized for AI discovery and execution:
 
 ### 🔗 Link Management
 - `shortenUrl`: Create branded short links with custom aliases, password protection, and expiration.
@@ -55,7 +55,7 @@ Add this entry to your `claude_desktop_config.json`:
       "command": "node",
       "args": [
         "-e",
-        "const http=require('https');const req=http.request({hostname:'jmpy.me',port:443,path:'/mcp',method:'POST',headers:{'Content-Type':'application/json','x-mcp-key':process.env.JMPY_API_KEY}},(res)=>{res.pipe(process.stdout);});process.stdin.pipe(req);"
+        "const http=require('https');const rl=require('readline').createInterface({input:process.stdin});rl.on('line',(line)=>{if(!line.trim())return;const req=http.request({hostname:'jmpy.me',port:443,path:'/mcp',method:'POST',headers:{'Content-Type':'application/json','x-mcp-key':process.env.JMPY_API_KEY}},(res)=>{let d='';res.on('data',(c)=>d+=c);res.on('end',()=>{if(d)process.stdout.write(d+'\\n');});});req.write(line);req.end();});"
       ],
       "env": {
         "JMPY_API_KEY": "your_api_key_here"
