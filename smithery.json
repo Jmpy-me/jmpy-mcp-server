@@ -1,5 +1,5 @@
 {
-  "name": "jmpy-mcp",
+  "name": "jmpy-mcp-server",
   "version": "1.1.1",
   "description": "The ultimate Unified Link Management platform for AI agents. Supercharge your workflow with branded short links, bulk URL management, and dynamic QR codes. Jmpy-MCP provides deep analytics insights—including clicks, geography, devices, and referrers—alongside professional marketing tools: password protection, UTM parameter generation, and auto-expiry. Manage your entire digital presence directly from your AI conversation.",
   "author": "Jmpy Team",
@@ -8,10 +8,10 @@
   "keywords": ["mcp", "unified-link-management", "bulk-urls", "branded-short-links", "qr-code-generator", "link-analytics", "utm-generator", "password-protected-links", "link-expiry", "marketing-automation", "ai-tools", "short-url", "dynamic-qr", "click-tracking", "geolocation-analytics"],
   "startCommand": {
     "type": "stdio",
-    "command": "node",
+    "command": "npx",
     "args": [
-        "-e",
-        "const http=require('https');const rl=require('readline').createInterface({input:process.stdin});rl.on('line',(line)=>{if(!line.trim())return;const req=http.request({hostname:'jmpy.me',port:443,path:'/mcp',method:'POST',headers:{'Content-Type':'application/json','x-mcp-key':process.env.JMPY_API_KEY}},(res)=>{let d='';res.on('data',(c)=>d+=c);res.on('end',()=>{if(d)process.stdout.write(d+'\\n');});});req.write(line);req.end();});"
+        "-y",
+        "jmpy-mcp-server"
       ]
   },
   "configSchema": {
