@@ -1,14 +1,12 @@
 {
   "mcpServers": {
     "jmpy": {
-      "command": "node",
-      "args": [
-        "-e",
-        "const http=require('https');const rl=require('readline').createInterface({input:process.stdin});rl.on('line',(line)=>{if(!line.trim())return;const req=http.request({hostname:'jmpy.me',port:443,path:'/mcp',method:'POST',headers:{'Content-Type':'application/json','x-mcp-key':process.env.JMPY_API_KEY}},(res)=>{let d='';res.on('data',(c)=>d+=c);res.on('end',()=>{if(d)process.stdout.write(d+'\\n');});});req.write(line);req.end();});"
-      ],
-      "env": {
-        "jmpy_8D7pUG-ckqVKIsjj1s3aBgRnkBC77LBJIsrhc0QUmKYz3sazYD657X8Bo5yqjbje"
-      }
+      "type": "http",
+      "url": "https://jmpy.me/mcp",
+      "headers": {
+        "x-mcp-key": "${JMPY_API_KEY}"
+      },
+      "description": "JMPY.me Universal MCP Server - Branded Links, QR Codes, and Marketing Analytics"
     }
   }
 }
