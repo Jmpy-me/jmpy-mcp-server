@@ -2,7 +2,7 @@
 description: Master the JMPY.me ecosystem for professional URL shortening, advanced QR code generation, branded domain management, and deep marketing analytics. Use this skill to orchestrate complex link-sharing strategies and derive actionable traffic insights.
 ---
 
-# JMPY.me Marketing & Analytics Expert Skill
+# JMPY.me Link Managmeent, Marketing & Analytics Expert Skill
 
 ## 🔑 Setup & Authentication
 To use these tools, a JMPY API Key is required.
