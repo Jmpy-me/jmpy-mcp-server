@@ -1,12 +1,11 @@
 {
   "mcpServers": {
     "jmpy": {
-      "type": "http",
-      "url": "https://jmpy.me/mcp",
-      "headers": {
-        "x-mcp-key": "${JMPY_API_KEY}"
-      },
-      "description": "JMPY.me Universal MCP Server - Branded Links, QR Codes, and Marketing Analytics"
+      "command": "npx",
+      "args": ["-y", "jmpy-mcp-server"],
+      "env": {
+        "JMPY_API_KEY": "your_api_key_here"
+      }
     }
   }
 }
