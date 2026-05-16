@@ -1,12 +1,167 @@
 {
-  "mcpServers": {
-    "jmpy": {
-      "type": "http",
-      "url": "https://jmpy.me/mcp",
-      "headers": {
-        "x-mcp-key": "${JMPY_API_KEY}"
-      },
-      "description": "JMPY.me Universal MCP Server - Branded Links, QR Codes, and Marketing Analytics"
+    "mcpServers": {
+        "jmpy": {
+            "name": "Jmpy.me MCP Server",
+            "description": "JMPY URL Shortener & QR Code Generator MCP Server",
+            "version": "1.1.0",
+            "protocolVersion": "2024-11-05",
+            "nativeTransport": {
+                "type": "sse",
+                "url": "https://jmpy.me/mcp/sse",
+                "headers": {
+                    "x-mcp-key": "YOUR_MCP_API_KEY_HERE"
+                }
+            },
+            "httpTransport": {
+                "type": "http",
+                "url": "https://jmpy.me/mcp",
+                "headers": {
+                    "x-mcp-key": "${JMPY_API_KEY}"
+                }
+            },
+            "cliTransport": {
+                "command": "npx",
+                "args": [
+                    "-y",
+                    "jmpy-mcp-server"
+                ],
+                "env": {
+                    "JMPY_API_KEY": "YOUR_MCP_API_KEY_HERE"
+                }
+            },
+            "features": [
+                "URL shortening with custom aliases",
+                "QR code generation",
+                "Click analytics",
+                "Campaign management",
+                "Custom domains"
+            ],
+            "tools": 81,
+            "resources": 11,
+            "prompts": 10
+        }
+    },
+    "instructions": {
+        "claude_desktop": {
+            "title": "Claude Desktop Integration",
+            "description": "Add JMPY to your local Claude Desktop app for link shortening, QR generation, and analytics.",
+            "config_path": "%APPDATA%\\Claude\\claude_desktop_config.json",
+            "json_block": {
+                "mcpServers": {
+                    "jmpy": {
+                        "command": "npx",
+                        "args": [
+                            "-y",
+                            "jmpy-mcp-server"
+                        ],
+                        "env": {
+                            "JMPY_API_KEY": "YOUR_MCP_KEY"
+                        }
+                    }
+                }
+            },
+            "steps": [
+                "1. Open your Claude Desktop config file",
+                "2. Copy and paste the JSON block above",
+                "3. Replace YOUR_MCP_KEY with your key from the JMPY dashboard",
+                "4. Restart Claude Desktop"
+            ]
+        },
+        "claude_web": {
+            "title": "Claude.ai Web Connector (Beta)",
+            "description": "Connect JMPY to Claude.ai using the new Custom Connector feature.",
+            "settings": {
+                "type": "MCP (SSE)",
+                "url": "https://jmpy.me/mcp/sse",
+                "auth": "Header (x-mcp-key)"
+            },
+            "steps": [
+                "1. Go to Claude.ai -> Settings -> Connectors",
+                "2. Click 'Add Custom Connector' and select 'MCP'",
+                "3. Enter the URL: https://jmpy.me/mcp/sse",
+                "4. Add the header 'x-mcp-key' with your JMPY keyif asked or follow the authenitcation flow.",
+                "5. Claude will now have access to 81+ JMPY tools"
+            ]
+        },
+        "cursor": {
+            "title": "Cursor / VS Code (.cursor/mcp.json)",
+            "configPath": ".cursor/mcp.json in your project root",
+            "setup": [
+                "1. Create .cursor/mcp.json in your project",
+                "2. Copy the mcpServers section using the config-mcp format",
+                "3. Replace YOUR_MCP_API_KEY_HERE with your API key"
+            ]
+        },
+        "config_mcp": {
+            "title": "Standard MCP Config (mcp.json)",
+            "filename": "mcp.json",
+            "setup": [
+                "1. Create a mcp.json file in your tools directory",
+                "2. Use the standardized mcpServers definition",
+                "3. Ensure the JMPY_API_KEY environment variable is set"
+            ]
+        },
+        "n8n": {
+            "title": "n8n Automation",
+            "setup": [
+                "1. Add an MCP Node to your workflow",
+                "2. Set URL to https://jmpy.me/mcp",
+                "3. Add header x-mcp-key with your API key",
+                "4. Use SSE transport for high-throughput tasks"
+            ]
+        },
+        "openai": {
+            "title": "ChatGPT Custom GPTs",
+            "description": "Integrate JMPY with ChatGPT using the OpenAPI specification.",
+            "setup": [
+                "1. Go to ChatGPT -> Explore -> Create a GPT",
+                "2. Click 'Configure' and scroll down to 'Actions'",
+                "3. Click 'Create new action'",
+                "4. Import from URL: https://jmpy.me/mcp/openapi.json",
+                "5. Set Authentication to 'API Key' (Auth Type: Custom, Custom Header Name: x-mcp-key)"
+            ]
+        },
+        "gemini": {
+            "title": "Google Gemini Extensions",
+            "description": "Connect JMPY to Gemini using the OpenAPI specification.",
+            "setup": [
+                "1. Create a Gemini Extension in Google AI Studio or Vertex AI",
+                "2. Import the OpenAPI spec from: https://jmpy.me/mcp/openapi.json",
+                "3. Configure authentication using the 'x-mcp-key' header and your JMPY API key"
+            ]
+        },
+        "zapier": {
+            "title": "Zapier Central",
+            "description": "Use JMPY tools within Zapier Central via OpenAPI.",
+            "setup": [
+                "1. Go to Zapier Central -> Behaviors -> Create Behavior",
+                "2. Import the OpenAPI spec URL: https://jmpy.me/mcp/openapi.json",
+                "3. Set authentication to Custom Header using 'x-mcp-key' and your API key"
+            ]
+        },
+        "generic": {
+            "jsonRpcEndpoint": "POST https://jmpy.me/mcp",
+            "protocol": "JSON-RPC 2.0",
+            "protocolVersion": "2024-11-05",
+            "authentication": {
+                "header": "x-mcp-key",
+                "alternative": [
+                    "Authorization: Bearer <token>"
+                ]
+            },
+            "supportedMethods": [
+                "initialize",
+                "ping",
+                "tools/list",
+                "tools/call",
+                "resources/list",
+                "resources/read",
+                "prompts/list",
+                "prompts/get",
+                "notifications/initialized",
+                "notifications/cancelled",
+                "logging/setLevel"
+            ]
+        }
     }
-  }
 }
