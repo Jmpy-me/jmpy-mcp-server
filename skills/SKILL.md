@@ -4,6 +4,8 @@ description: Master the JMPY.me ecosystem for professional URL shortening, advan
 
 # JMPY.me Link Management, Marketing & Analytics Expert Skill
 
+[JMPY.me](https://jmpy.me) is a professional link management and marketing platform that allows users to create shortened links, design customizable QR codes, manage custom domains, and analyze visitor traffic with granular real-time analytics. This skill integrates JMPY's capabilities directly into AI agents to automate digital marketing workflows.
+
 ## 🔑 Setup & Authentication
 To use these tools, a JMPY API Key is required.
 1. **Get a Key**: Visit [jmpy.me/dashboard/api-keys](https://jmpy.me/dashboard/api-keys) to generate your production key.
