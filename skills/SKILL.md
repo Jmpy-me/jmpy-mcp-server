@@ -1,4 +1,5 @@
 ---
+name: jmpy-skills
 description: Master the JMPY.me ecosystem for professional URL shortening, advanced QR code generation, branded domain management, and deep marketing analytics. Use this skill to orchestrate complex link-sharing strategies and derive actionable traffic insights.
 ---
 
